@@ -10,13 +10,15 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, recall_score
 from scipy import stats
 import warnings
 
 # Считываем файл train.csv, удаляя последний столбец, так как он содержит NaN
 DATA_PATH = 'dataset/Training.csv'
 data = pd.read_csv(DATA_PATH).dropna(axis=1)
+# print(data.info())
+# print(data.describe())
 # print(data[:10])
 
 # Проверяем, сбалансирован ли набор данных или нет
@@ -79,6 +81,18 @@ print(f'Доля правильных ответов (accuracy) на обуча�
 print(f'Доля правильных ответов на тестовой выборке с помощью SVM Classifier: '
       f'{accuracy_score(y_test, predict) * 100}%\n')
 
+# print(f'Точность (precision) на обучающей выборке с помощью SVM Classifier: '
+#       f'{precision_score(y_train, svm_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Точность на тестовой выборке с помощью SVM Classifier: '
+#       f'{precision_score(y_test, predict, average='weighted') * 100}%\n')
+#
+# print(f'Полнота (recall) на обучающей выборке с помощью SVM Classifier: '
+#       f'{recall_score(y_train, svm_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Полнота на тестовой выборке с помощью SVM Classifier: '
+#       f'{recall_score(y_test, predict, average='weighted') * 100}%\n')
+
 # cf_matrix = confusion_matrix(y_test, predict)
 # plt.figure(figsize=(12, 8))
 # sns.heatmap(cf_matrix, annot=True)
@@ -95,6 +109,18 @@ print(f'Доля правильных ответов (accuracy) на обуча�
 print(f'Доля правильных ответов на тестовой выборке с помощью NB Classifier: '
       f'{accuracy_score(y_test, predict) * 100}%\n')
 
+# print(f'Точность (precision) на обучающей выборке с помощью NB Classifier: '
+#       f'{precision_score(y_train, nb_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Точность на тестовой выборке с помощью NB Classifier: '
+#       f'{precision_score(y_test, predict, average='weighted') * 100}%\n')
+#
+# print(f'Полнота (recall) на обучающей выборке с помощью NB Classifier: '
+#       f'{recall_score(y_train, nb_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Полнота на тестовой выборке с помощью NB Classifier: '
+#       f'{recall_score(y_test, predict, average='weighted') * 100}%\n')
+
 # cf_matrix = confusion_matrix(y_test, predict)
 # plt.figure(figsize=(12, 8))
 # sns.heatmap(cf_matrix, annot=True)
@@ -110,6 +136,18 @@ print(f'Доля правильных ответов (accuracy) на обуча�
 
 print(f'Доля правильных ответов на тестовой выборке с помощью Random Forest Classifier: '
       f'{accuracy_score(y_test, predict) * 100}%\n')
+
+# print(f'Точность (precision) на обучающей выборке с помощью Random Forest Classifier: '
+#       f'{precision_score(y_train, rf_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Точность на тестовой выборке с помощью Random Forest Classifier: '
+#       f'{precision_score(y_test, predict, average='weighted') * 100}%\n')
+#
+# print(f'Полнота (recall) на обучающей выборке с помощью Random Forest Classifier: '
+#       f'{recall_score(y_train, rf_model.predict(X_train), average='weighted') * 100}%')
+#
+# print(f'Полнота на тестовой выборке с помощью Random Forest Classifier: '
+#       f'{recall_score(y_test, predict, average='weighted') * 100}%\n')
 
 # cf_matrix = confusion_matrix(y_test, predict)
 # plt.figure(figsize=(12, 8))
